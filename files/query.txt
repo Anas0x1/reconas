@@ -1,0 +1,29 @@
+domain
+domain port:21
+domain port:22
+domain port:25
+domain port:53
+domain port:80
+domain port:3306
+domain port:8080
+org:tld 'MongoDB Server Information' port:27017 -authentication
+org:tld 'Set-Cookie: mongo-express=' '200 OK'
+org:tld mysql port:'3306'
+org:tld port:5432 PostgreSQL
+org:tld port:'9200' all:'elastic indices'
+org:tld proftpd port:21
+org:tld port:21 vsftpd 3.0.3
+org:tld '230 Login successful.' port:21
+org:tld openssh port:22
+org:tld port:'23'
+org:tld port:'25' product:'exim'
+org:tld port:'11211' product:'Memcached'
+org:tld 'X-Jenkins' 'Set-Cookie: JSESSIONID' http.title:'Dashboard'
+org:tld 'port:53' Recursion: Enabled
+org:tld product:'Apache httpd' port:'80'
+org:tld product:'Microsoft IIS httpd'
+org:tld product:'nginx'
+org:tld port:8080 product:'nginx'
+org:tld remote desktop 'port:3389'
+org:tld 'authentication disabled' 'RFB 003.008'
+org:tld 'Authentication: disabled' port:445
