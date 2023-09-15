@@ -46,6 +46,7 @@ This will display the help menu, providing an overview of the available options 
 ![carbon (5)](https://github.com/0x0anas/reconas/assets/78263620/831a1d95-b6cc-4059-8b4b-3b6c63cc7a49)
 
 Specify the target domain by using the `-d` flag followed by the domain name and `-tf` flag followed by your github token file path. For example:
+The `-tf` or `--token_file` option is required for GitHub dorking.
 ```
 sudo ./reconas.sh -d domain.com -tf files/token.txt
 ```
