@@ -14,7 +14,7 @@ Reconas is a powerful and customizable reconnaissance tool designed to assist in
 - Conducting port scanning on IP addresses
 - Utilizing Shodan dorks
 - Utilizing GitHub dorks
-- Scanning for CORS misconfigurations
+- Scanning for CORS misconfiguration
 - Scanning for subdomain takeover
 - Scanning for CRLF injection
 
@@ -24,7 +24,8 @@ Reconas is a powerful and customizable reconnaissance tool designed to assist in
 - Collecting parameters using ParamSpider and Arjun
 - Gathering all links from the Wayback Machine
 - Extracting and scanning JavaScript (JS) files
-- Scanning for Cross-Site Scripting (XSS) and SQL injection (SQLi) vulnerabilities
+- Scanning for Cross-Site Scripting (XSS)
+- Collecting possible vulnerable parameters with xss,sqli,lfi,ssrf, and open redirect
 - Conducting port scanning
 - Running Nuclei on collected parameters
 
@@ -33,8 +34,9 @@ Reconas is a powerful and customizable reconnaissance tool designed to assist in
 git clone https://github.com/0x0anas/reconas.git
 cd reconas/
 echo "Your_Github_Token" > files/token.txt
+shodan init "Your_Shodan_API"
 sudo chmod +x setup.sh reconas.sh
-./setup.sh
+sudo ./setup.sh
 ./reconas -h
 ```
 # Usage
@@ -61,11 +63,11 @@ Options:
 ```
 Specify the target domain by using the `-d` flag followed by the domain name and `-tf` flag followed by your github token file path. For example:
 ```
-./reconas.sh -d domain.com -tf files/token.txt
+sudo ./reconas.sh -d domain.com -tf files/token.txt
 ```
 Specify the target subdomain by using `-sub` flag followed by the subdomain name. For example:
 ```
-./reconas.sh -sub sub.domain.com
+sudo ./reconas.sh -sub sub.domain.com
 ```
 
 
