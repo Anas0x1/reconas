@@ -1,33 +1,34 @@
 # Reconas
 Reconas is a powerful and customizable reconnaissance tool designed to assist in information gathering and vulnerability assessment during security assessments and bug hunting. It provides a comprehensive set of features and modules that automate various reconnaissance tasks, helping security professionals gather valuable intelligence about target systems and identify potential vulnerabilities.
 # Methodology for Domain Recon
-- Getting domain IPs
-- Gathering all DNS records
-- Performing DNS enumeration
-- Scanning for DNS zone transfer
-- Collecting emails
-- Identifying domain technologies
-- Gathering information about the domain
-- Collecting subdomains
-- Extracting live subdomains
-- Converting live subdomains into IP addresses
-- Conducting port scanning on IP addresses
-- Utilizing Shodan dorks
-- Utilizing GitHub dorks
-- Scanning for CORS misconfiguration
-- Scanning for subdomain takeover
-- Scanning for CRLF injection
+- Getting domain IPs.
+- Gathering all DNS records.
+- Performing DNS enumeration.
+- Scanning for DNS zone transfer.
+- Collecting emails.
+- Identifying domain technologies.
+- Gathering information about the domain.
+- Collecting subdomains.
+- Extracting live subdomains.
+- Converting live subdomains into IP addresses.
+- Conducting port scanning on IP addresses.
+- Utilizing Shodan dorks.
+- Utilizing GitHub dorks.
+- Scanning for CORS misconfiguration.
+- Scanning for subdomain takeover.
+- Scanning for CRLF injection.
 
 # Methodology for Subdomain Recon
-- Obtaining IP addresses of subdomains
-- Performing directory fuzzing
-- Collecting parameters using ParamSpider and Arjun
-- Gathering all links from the Wayback Machine
-- Extracting and scanning JavaScript (JS) files
-- Scanning for Cross-Site Scripting (XSS)
-- Collecting possible vulnerable parameters with xss,sqli,lfi,ssrf, and open redirect
-- Conducting port scanning
-- Running Nuclei on collected parameters
+- Obtaining IP addresses of subdomains.
+- Performing directory fuzzing.
+- Performing backup files fuzzing.
+- Collecting parameters using ParamSpider and Arjun.
+- Gathering all links from the Wayback Machine.
+- Extracting and scanning JavaScript (JS) files.
+- Scanning for Cross-Site Scripting (XSS).
+- Collecting possible vulnerable parameters with xss,sqli,lfi,ssrf, and open redirect.
+- Conducting port scanning.
+- Running Nuclei on collected parameters.
 
 # Installation
 ```
