@@ -33,10 +33,10 @@ Reconas is a powerful and customizable reconnaissance tool designed to assist in
 ```
 git clone https://github.com/0x0anas/reconas.git
 cd reconas/
-echo "Your_Github_Token" > files/token.txt
-shodan init "Your_Shodan_API"
 sudo chmod +x setup.sh reconas.sh
 sudo ./setup.sh
+echo "Your_Github_Token" > files/token.txt
+shodan init "Your_Shodan_API"
 ./reconas -h
 ```
 # Usage
