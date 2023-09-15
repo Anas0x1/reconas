@@ -42,25 +42,9 @@ shodan init "Your_Shodan_API"
 # Usage
 `./reconas.sh -h`
 This will display the help menu, providing an overview of the available options and their usage.
-```
 
- #####   ######   ####    ####   #    #    ##     ####
- #    #  #       #    #  #    #  ##   #   #  #   #
- #    #  #####   #       #    #  # #  #  #    #   ####
- #####   #       #       #    #  #  # #  ######       #
- #   #   #       #    #  #    #  #   ##  #    #  #    #
- #    #  ######   ####    ####   #    #  #    #   ####   v1
+![carbon (5)](https://github.com/0x0anas/reconas/assets/78263620/831a1d95-b6cc-4059-8b4b-3b6c63cc7a49)
 
-                                                        twitter:0xanas
-                                                        by @Anas Ibrahim
-Usage:
-        ./reconas.sh [options]
-Options:
-        -h   ,  --help            Print this help message.
-        -d   ,  --domain          Check the domain format.
-        -tf  ,  --token_file      Enter a file includes github token.
-        -sub ,  --subdomain       Enter subdomain to recon it.
-```
 Specify the target domain by using the `-d` flag followed by the domain name and `-tf` flag followed by your github token file path. For example:
 ```
 sudo ./reconas.sh -d domain.com -tf files/token.txt
