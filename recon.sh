@@ -27,7 +27,7 @@ ${BOLDRED}
 }
 
 #Check for the help option
-if [[ $1 == "-h" ]]; then
+if [[ $1 == "-h" ]] || [[ $1 == "--help" ]]; then
         banner
         echo "Usage:
         $0 [options]
@@ -50,16 +50,16 @@ Use -h for help.
 fi
 
 #Check if the user entered the -d option
-if [[ $1 == "-d" ]]; then
+if [[ $1 == "-d" ]] || [[ $1 == "--domain" ]]; then
         
         if [ $# -eq 1 ]; then
-                echo -e "${Red} Error: -d requires an argument ${white}"
+                echo -e "${Red} Error: -d/--domain option requires an argument ${white}"
                 exit 1
         fi
 
         # Check if the user also entered the -tf option
-        if [[ $3 == "-tf" ]]; then
-                
+        if [[ $3 == "-tf" ]] || [[ $3 == "--token_file" ]]; then
+
                 # Check if the user entered a file name after the -tf option
                 if [ $# -eq 4 ]; then
                         banner
@@ -166,23 +166,70 @@ if [[ $1 == "-d" ]]; then
                         cat $PWD/ip/live_ips.txt | naabu -nmap-cli 'nmap -sV -oX ip/nmap_output.txt'
                         echo -e "\n${BOLDCYAN} [+] Results saved in ${BOLDGREEN} $PWD/ip/nmap_output.txt ${white}\n"
 
+                        #Shodan dorking 
+                        echo -e "${BOLDCYAN}################# Shodan dorks ################# ${white}\n"
                         #Creating shodan directory
                         mkdir shodan
 
                         #Extract domain name without tld
-                        echo $1 | cut -d '.' -f 1 > shodan/res
-                        tld=$(cat shodan/res)
-                        echo -e "${BOLDGREEN} domain without tld is: $tld ${white}\n"
+                        echo $domain | cut -d '.' -f 1 | tee tld.txt
+                        tld=$(cat tld.txt)
+                        #Define the dorks
+                        dorks=(
+                                "$domain"
+                                "$domain port:80"
+                                "$domain port:21"
+                                "$domain port:22"
+                                "$domain port:25"
+                                "$domain port:8080"
+                                "$domain port:53"
+                                "$domain port:3306"
+                                "hostname:$domain"
+                                "ssl:$domain"
+                                "ssl.cert.issuer.cn:$domain"
+                                "ssl.cert.subject.cn:$domain"
+                                "org:$tld 'MongoDB Server Information' port:27017 -authentication"
+                                "org:$tld 'Set-Cookie: mongo-express=' '200 OK'"
+                                "org:$tld mysql port:'3306'"
+                                "org:$tld port:5432 PostgreSQL"
+                                "org:$tld port:'9200' all:'elastic indices'"
+                                "org:$tld proftpd port:21"
+                                "org:$tld port:21 vsftpd 3.0.3"
+                                "org:$tld '230 Login successful.' port:21"
+                                "org:$tld openssh port:22"
+                                "org:$tld port:'23'"
+                                "org:$tld port:'25' product:'exim'"
+                                "org:$tld port:'11211' product:'Memcached'"
+                                "org:$tld 'X-Jenkins' 'Set-Cookie: JSESSIONID' http.title:'Dashboard'"
+                                "org:$tld 'port:53' Recursion: Enabled"
+                                "org:$tld product:'Apache httpd' port:'80'"
+                                "org:$tld product:'Microsoft IIS httpd'"
+                                "org:$tld product:'nginx'"
+                                "org:$tld port:8080 product:'nginx'"
+                                "org:$tld remote desktop 'port:3389'"
+                                "org:$tld 'authentication disabled' 'RFB 003.008'"
+                                "org:$tld 'Authentication: disabled' port:445"
+                        )
 
-                        #shodan dorks
-                        echo -e "${BOLDCYAN}################# Searhing Shodan Dorks ################# ${white}\n"
-                        sed 's/domain/$domain/g; s/tld/$tld/g' $PWD/files/query.txt | tee files/shodan_dorks.txt
-                        uncover -q $PWD/files/shodan_dorks.txt -silent -f ip:port:host -o shodan/shodan_results.txt                         
-                        echo -e "\n${BOLDCYAN} [+] Results saved in ${BOLDGREEN} $PWD/shodan/shodan_results.txt ${white}\n"
-                                                
+                        # Loop through the dorks
+                        for dork in "${dorks[@]}"; do
+                                echo "------------------------------------------------"
+                                # Print the dork name
+                                echo -e "${BOLDCYAN} [+] Searching for dork : ${YELLOW} $dork ${white}"
+
+                                # Run the Shodan search command
+                                shodan search --fields ip_str,port,org,hostnames,transport "$dork" | tee -a $dork.txt
+
+                                echo -e "${BOLDCYAN} [+] The results of ${YELLOW} $dork ${BOLDCYAN} saved in ${boldgreen} $dork.txt ${white}"
+                                #Print the number of lines in the file
+                                lines=$(wc -l "$dork.txt")
+                                echo -e "${BOLDCYAN} [+] The number of IPs founded using this dork ${YELLOW} '$dork'${BOLDCYAN} is :${BOLDGREEN} $lines ${white}"
+                                echo "--------------------------------------------------"
+                        done
+                                    
+
                         #Creating github directory
                         mkdir github
-                        
 
                         #github dorks
                         echo -e "${BOLDCYAN}################# Github Dorks ################# ${white}\n"
@@ -210,17 +257,20 @@ if [[ $1 == "-d" ]]; then
 
                 
                 else
-                        echo -e "${Red} Error: The file name must be specified after the -tf option. ${white}"
+                        echo -e "${Red} Error: The file name must be specified after the -tf/--token_file option. ${white}"
                         exit 1
                 fi
         else
-                echo -e "${Red} Error: The -tf option is required after the -d option. ${white}"
+                echo -e "${Red} Error: The -tf/--token_file option is required after the -d option. ${white}"
                 exit 1
         fi
 fi
 
+
+
+
 #Doing subdomain recon while using -sub option
-if [[ $1 == "-sub" ]]; then
+if [[ $1 == "-sub" ]] || [[ $1 == "--subdomain" ]]; then
 
         if [ $# -eq 2 ]; then
                 banner
@@ -245,6 +295,11 @@ if [[ $1 == "-sub" ]]; then
                 dirsearch -u http://$subdomain | tee dir.txt
                 echo -e "\n${BOLDCYAN} [+] Results saved in ${BOLDGREEN} $PWD/dir.txt ${white}\n"
 
+                #Fuzzing directories
+                echo -e "${BOLDCYAN}################# Fuzzing backup files ################# ${white}\n"
+                dirsearch -u http://$subdomain -w $PWD/files/backup_files_only.txt | tee backup.txt
+                echo -e "\n${BOLDCYAN} [+] Results saved in ${BOLDGREEN} $PWD/backup.txt ${white}\n"
+
                 #Collecting directories and files from archive
                 echo -e "${BOLDCYAN}################# Wayback Archive ################# ${white}\n"
                 echo "$subdomain" | waybackurls | tee archive.txt
@@ -256,22 +311,39 @@ if [[ $1 == "-sub" ]]; then
                 subjs -i js.txt | tee js_scan.txt
                 echo -e "\n${BOLDCYAN} [+] Results saved in ${BOLDGREEN} $PWD/archive.txt ${white}\n"
 
+                #Collecting possible vulnerable links
+                echo -e "${BOLDCYAN}################# Collecting Possible Vulnerable XSS Links ################# ${white}\n"
+                cat $PWD/param1.txt $PWD/param2.txt $PWD/archive.txt | gf xss | tee xss_params.txt
                 #Scanning XSS
                 echo -e "${BOLDCYAN}################# Scanning XSS ################# ${white}\n"
-                cat $PWD/param1.txt $PWD/param2.txt $PWD/archive.txt | gf xss > xss_params.txt
                 cat xss_params.txt | kxss | tee xss_scan.txt
                 echo -e "\n${BOLDCYAN} [+] Results saved in ${BOLDGREEN} $PWD/xss_scan.txt & $PWD/xss_params.txt ${white}\n"
 
-                #Scanning SQLi
-                echo -e "${BOLDCYAN}################# Scanning SQLi ################# ${white}\n"
-                cat $PWD/param1.txt $PWD/param2.txt $PWD/archive.txt | gf sqli > sqli_params.txt
-                # Create a for loop to iterate over the parameters
-                for line in $(cat $PWD/sqli_params.txt); do
-                        # Run sqlmap against the parameter
-                        sqlmap -u "$line" --batch --level=3 --risk=3 > $line.txt
-                        echo -e "\n${BOLDCYAN} [+] Results saved in ${BOLDGREEN} $PWD/$line.txt ${white}\n"
-                done
-        
+               
+                #Collecting possible vulnerable links
+                echo -e "${BOLDCYAN}################# Collecting Possible Vulnerable SQLi Links ################# ${white}\n"
+                cat $PWD/param1.txt $PWD/param2.txt $PWD/archive.txt | gf sqli | tee sqli_params.txt
+                
+                #Collecting possible vulnerable links
+                echo -e "${BOLDCYAN}################# Collecting Possible Vulnerable SSRF Links ################# ${white}\n"
+                cat $PWD/archive.txt | gf ssrf > sqli_params.txt
+                echo -e "\n${BOLDCYAN} [+] Results saved in ${BOLDGREEN} $PWD/ssrf_params.txt ${white}\n"
+
+                #Collecting possible vulnerable links
+                echo -e "${BOLDCYAN}################# Collecting Possible Vulnerable LFI Links ################# ${white}\n"
+                cat $PWD/archive.txt | gf ssrf > sqli_params.txt
+                echo -e "\n${BOLDCYAN} [+] Results saved in ${BOLDGREEN} $PWD/lfi_params.txt ${white}\n"
+
+                #Collecting possible vulnerable links
+                echo -e "${BOLDCYAN}################# Collecting Possible Vulnerable IDOR Links ################# ${white}\n"
+                cat $PWD/archive.txt | gf ssrf > sqli_params.txt
+                echo -e "\n${BOLDCYAN} [+] Results saved in ${BOLDGREEN} $PWD/idor_params.txt ${white}\n"
+
+                #Collecting possible vulnerable links
+                echo -e "${BOLDCYAN}################# Collecting Possible Vulnerable Redirect Links ################# ${white}\n"
+                cat $PWD/archive.txt | gf ssrf > sqli_params.txt
+                echo -e "\n${BOLDCYAN} [+] Results saved in ${BOLDGREEN} $PWD/redirect_params.txt ${white}\n"
+
                 #Scanning nmap
                 echo -e "${BOLDCYAN}################# Port Scanning ################# ${white}\n"
                 nmap $ip -T4 -sV -Pn -o nmap.txt
