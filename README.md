@@ -1,7 +1,7 @@
 # Reconas
 Reconas is a powerful and customizable reconnaissance tool designed to assist in information gathering and vulnerability assessment during security assessments and bug hunting. It provides a comprehensive set of features and modules that automate various reconnaissance tasks, helping security professionals gather valuable intelligence about target systems and identify potential vulnerabilities.
 # Methodology for Domain Recon
-- Getting domain IPs.
+- Getting domain IP.
 - Gathering all DNS records.
 - Performing DNS enumeration.
 - Scanning for DNS zone transfer.
