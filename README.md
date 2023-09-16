@@ -46,13 +46,13 @@ This will display the help menu, providing an overview of the available options 
 
 ![carbon (5)](https://github.com/0x0anas/reconas/assets/78263620/831a1d95-b6cc-4059-8b4b-3b6c63cc7a49)
 
-The `-tf` or `--token_file` option is required for GitHub dorking.
-Specify the target domain by using the `-d` flag followed by the domain name and `-tf` flag followed by your github token file path. For example:
+- The `-tf` or `--token_file` option is required for GitHub dorking.
+- Specify the target domain by using the `-d` flag followed by the domain name and `-tf` flag followed by your github token file path. For example:
 ```
 sudo ./reconas.sh -d domain.com -tf files/token.txt
 ```
-The `-sub` or `--subdomain` option is required alone to perform reconnaissance on this subdomain.
-Specify the target subdomain by using `-sub` flag followed by the subdomain name. For example:
+- The `-sub` or `--subdomain` option is required alone to perform reconnaissance on this subdomain.
+- Specify the target subdomain by using `-sub` flag followed by the subdomain name. For example:
 ```
 sudo ./reconas.sh -sub sub.domain.com
 ```
