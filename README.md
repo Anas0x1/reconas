@@ -55,6 +55,7 @@ Reconas is a powerful and customizable reconnaissance tool designed to assist in
 - kxss
 - gf
 - gf-patterns
+- subjs
 
 # Installation
 ```
