@@ -3,9 +3,6 @@
 #Update System
 sudo apt-get update
 
-#Upgrade System
-sudo apt-get upgrade
-
 #Install dns utilization tools
 sudo apt-get install dnsutils -y
 
