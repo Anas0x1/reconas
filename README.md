@@ -30,7 +30,7 @@ Reconas is a powerful and customizable reconnaissance tool designed to assist in
 - Conducting port scanning.
 - Running Nuclei on collected parameters.
 
-#Required Tools
+# Required Tools
 - whois
 - dig
 - host
