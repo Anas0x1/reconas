@@ -43,8 +43,10 @@ Reconas is a powerful and customizable reconnaissance tool designed to assist in
 - naabu
 - nmap
 - shodan
+- gitdorks_go
 - corscanner
 - crlfuzz
+- subzy
 - dirsearch
 - arjun
 - paramspider
