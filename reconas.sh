@@ -218,9 +218,9 @@ if [[ $1 == "-d" ]] || [[ $1 == "--domain" ]]; then
                                 echo -e "${BOLDCYAN} [+] Searching for dork : ${YELLOW} $dork ${white}"
 
                                 # Run the Shodan search command
-                                shodan search --fields ip_str,port,org,hostnames,transport "$dork" | tee -a $dork.txt
+                                shodan search --fields ip_str,port,org,hostnames,transport "$dork" | tee -a shodan/$dork.txt
 
-                                echo -e "${BOLDCYAN} [+] The results of ${YELLOW} $dork ${BOLDCYAN} saved in ${boldgreen} $dork.txt ${white}"
+                                echo -e "${BOLDCYAN} [+] The results of ${YELLOW} $dork ${BOLDCYAN} saved in ${boldgreen} shodan/$dork.txt ${white}"
                                 #Print the number of lines in the file
                                 lines=$(wc -l "$dork.txt")
                                 echo -e "${BOLDCYAN} [+] The number of IPs founded using this dork ${YELLOW} '$dork'${BOLDCYAN} is :${BOLDGREEN} $lines ${white}"
