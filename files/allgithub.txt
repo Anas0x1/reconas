@@ -1,8 +1,3 @@
-password
-npmrc _auth
-dockercfg
-pem private
-id_rsa
 aws_access_key_id
 aws_secret 
 aws_token
@@ -10,33 +5,34 @@ aws_key
 access_key 
 access_token
 admin_pass
-s3cfg
-htpasswd
-git-credentials
-bashrc password
-sshd_config
-xoxp OR xoxb OR xoxa
-SECRET_KEY
-client_secret
-github_token
-FTP
 apikey
+api key
+aws_access 
+auth_token 
+appspot
+app_id 
+apidocs
+amazonaws
 app_secret
-passwd
-s3.yml 
-.exs 
+bashrc password
 beanstalkd.yml
-deploy.rake
-mysql   
-credentials
-PWD   
 .bash_history
-.sls
-secrets
 composer.yml  
 cache_s3_secret_key
 cattle_access_key
 cattle_secret_key
+codecov_token
+config
+conn.login
+connectionstring
+consumer_key
+client_secret
+consumer_secret
+client_secret
+credentials
+dotfiles
+dockercfg
+deploy.rake
 db_password
 db_server
 db_username
@@ -44,8 +40,67 @@ dbpasswd
 dbpassword
 dbuser
 deploy_password
-twitter_secret
-twitterKey
+.exs
+extension:sql
+extension:sql mysql dump
+extension:sql mysql dump password
+extension:yaml mongolab.com
+extension:sql 
+extension:cfg
+FTP
+ftp_password
+fossa_api_key
+flickr_api_key
+filename:spec
+filename:pass
+filename:makefile
+filename:global
+filename:constants
+filename:database
+filename:env  
+filename:environment
+filename:config
+firebase
+flickr_api_key
+fossa_api_key
+ftp
+ftp_password
+git-credentials
+github_token
+gh_token
+herokuapp
+htpasswd
+internal
+id_rsa
+jwt_password
+jwt_secret
+jwt_secret_key
+jwt_token
+jwt_user
+jwt_web_secert_key
+jwt_xmpp_secert_key
+key
+login
+mysql password
+mailgun  
+mailchimp
+mail_port
+magento password
+nexus password
+npmrc _auth
+password
+pem private
+passwd
+pass
+prod  
+preprod  
+PWD 
+private  
+private -language:java
+pem private 
+passwords
+password travis  
+rds.amazonaws.com password
 storePassword
 stormpath_api_key_id
 stormpath_api_key_secret
@@ -71,19 +126,17 @@ secret.password
 secretaccesskey
 secretkey
 secrets
-jwt_password
-jwt_secret
-jwt_secret_key
-jwt_token
-jwt_user
-jwt_web_secert_key
-jwt_xmpp_secert_key
-firebase
-flickr_api_key
-fossa_api_key
-ftp
-ftp_password
-extension:sql
-extension:sql mysql dump
-extension:sql mysql dump password
-extension:yaml mongolab.com
+secret
+secret access key
+secret_key 
+s3_key 
+s3cfg
+sshd_config
+SECRET_KEY
+settings
+s3.yml
+.sls
+secrets
+xoxp OR xoxb OR xoxa
+twitter_secret
+twitterKey
