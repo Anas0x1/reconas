@@ -30,6 +30,30 @@ Reconas is a powerful and customizable reconnaissance tool designed to assist in
 - Conducting port scanning.
 - Running Nuclei on collected parameters.
 
+#Required Tools
+- whois
+- dig
+- host
+- dnsrecon
+- whatweb
+- emailharvester
+- subfinder
+- assetfinder
+- amass
+- naabu
+- nmap
+- shodan
+- corscanner
+- crlfuzz
+- dirsearch
+- arjun
+- paramspider
+- nuclei
+- waybackurls
+- kxss
+- gf
+- gf-patterns
+
 # Installation
 ```
 git clone https://github.com/0x0anas/reconas.git
