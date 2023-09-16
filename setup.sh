@@ -3,6 +3,9 @@
 #Update System
 sudo apt-get update
 
+#Upgrade System
+sudo apt-get upgrade
+
 #Install dns utilization tools
 sudo apt-get install dnsutils -y
 
@@ -19,15 +22,7 @@ sudo apt install whois
 go install github.com/projectdiscovery/asnmap/cmd/asnmap@latest
 
 #Install WhatWeb
-git clone https://github.com/urbanadventurer/WhatWeb.git
-cd WhatWeb/
-make install
-gem install bundler
-bundle update
-bundle install
-sudo cp whatweb /usr/local/bin
-sudo gem install anemone
-sudo gem install rchardet
+pip3 install whatweb
 
 #Install subfinder
 go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
@@ -71,8 +66,13 @@ pip3 install corscanner
 #Install crlfuzz
 go install github.com/dwisiswant0/crlfuzz/cmd/crlfuzz@latest
 
+#Install 
+
 #Install dirsearch
 pip3 install dirsearch
 
 #Install subjs
 go install github.com/lc/subjs@latest@latest
+
+#Install shodan
+pip3 install shodan
