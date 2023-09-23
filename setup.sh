@@ -71,5 +71,5 @@ pip3 install dirsearch
 #Install subjs
 go install github.com/lc/subjs@latest@latest
 
-#Install shodan
-pip3 install shodan
+#install dorks_hunter
+git clone https://github.com/six2dez/dorks_hunter.git
