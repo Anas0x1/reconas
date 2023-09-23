@@ -42,7 +42,6 @@ Reconas is a powerful and customizable reconnaissance tool designed to assist in
 - amass
 - naabu
 - nmap
-- shodan
 - gitdorks_go
 - corscanner
 - crlfuzz
@@ -57,14 +56,21 @@ Reconas is a powerful and customizable reconnaissance tool designed to assist in
 - gf-patterns
 - subjs
 
+# Updates
+- Improving the performance of the code.
+- Shodan dorking.
+- Google dorking.
+- Saving the results of each function in a single directory.
+- Saving the results of each command in a single file.
+
 # Installation
 ```
 git clone https://github.com/0x0anas/reconas.git
 cd reconas/
 sudo chmod +x setup.sh reconas.sh
 sudo ./setup.sh
+pip3 install -r requirements.txt
 echo "Your_Github_Token" > files/token.txt
-shodan init "Your_Shodan_API"
 ./reconas -h
 ```
 # Usage
@@ -73,15 +79,15 @@ This will display the help menu, providing an overview of the available options 
 
 ![carbon (5)](https://github.com/0x0anas/reconas/assets/78263620/831a1d95-b6cc-4059-8b4b-3b6c63cc7a49)
 
-- The `-tf` or `--token_file` option is required for GitHub dorking.
-- Specify the target domain by using the `-d` flag followed by the domain name and `-tf` flag followed by your github token file path. For example:
+- The `-t` option is required for GitHub dorking.
+- Specify the target domain by using the `-d` flag followed by the domain name and `-t` flag followed by your github token file path. For example:
 ```
-sudo ./reconas.sh -d domain.com -tf files/token.txt
+sudo ./reconas.sh -d domain.com -t files/token.txt
 ```
-- The `-sub` or `--subdomain` option is required alone to perform reconnaissance on this subdomain.
-- Specify the target subdomain by using `-sub` flag followed by the subdomain name. For example:
+- The `-s` option is required alone to perform reconnaissance on this subdomain.
+- Specify the target subdomain by using `-s` flag followed by the subdomain name. For example:
 ```
-sudo ./reconas.sh -sub sub.domain.com
+sudo ./reconas.sh -s sub.domain.com
 ```
 
 
