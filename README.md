@@ -69,7 +69,7 @@ git clone https://github.com/0x0anas/reconas.git
 cd reconas/
 sudo chmod +x setup.sh reconas.sh
 sudo ./setup.sh
-pip3 install -r requirements.txt
+pip3 install -r dorks_hunter/requirements.txt
 echo "Your_Github_Token" > files/token.txt
 ./reconas -h
 ```
