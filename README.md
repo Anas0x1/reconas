@@ -62,6 +62,8 @@ Reconas is a powerful and customizable reconnaissance tool designed to assist in
 - Google dorking.
 - Saving the results of each function in a single directory.
 - Saving the results of each command in a single file.
+- Cheking installed tools.
+- Installing non existed tools.
 
 # Installation
 ```
