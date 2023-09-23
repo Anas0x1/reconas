@@ -77,7 +77,8 @@ echo "Your_Github_Token" > files/token.txt
 `./reconas.sh -h`
 This will display the help menu, providing an overview of the available options and their usage.
 
-![carbon (5)](https://github.com/0x0anas/reconas/assets/78263620/831a1d95-b6cc-4059-8b4b-3b6c63cc7a49)
+![carbon (6)](https://github.com/0x0anas/reconas/assets/78263620/02d1bca4-3ddf-475b-b302-136a94887e4f)
+
 
 - The `-t` option is required for GitHub dorking.
 - Specify the target domain by using the `-d` flag followed by the domain name and `-t` flag followed by your github token file path. For example:
