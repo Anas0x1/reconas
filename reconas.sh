@@ -360,7 +360,7 @@ function gf() {
 
 	#Collecting possible vulnerable links
 	echo -e "${BOLDCYAN}################# Collecting Possible Vulnerable XSS Links ################# ${white}\n"
-	cat $PWD/param1.txt $PWD/param2.txt $PWD/archive.txt | gf xss > gf/xss_params.txt
+	cat $PWD/param1.txt $PWD/param2.txt $PWD/archive.txt | gf xss | tee gf/xss_params.txt
 	echo -e "\n${BOLDCYAN} [+] Possible Vulnerable XSS Links Saved in ${BOLDGREEN} $PWD/ssrf_params.txt ${white}\n"
 	
 	#Scanning XSS
@@ -371,27 +371,27 @@ function gf() {
                
 	#Collecting possible vulnerable links
 	echo -e "${BOLDCYAN}################# Collecting Possible Vulnerable SQLi Links ################# ${white}\n"
-	cat $PWD/param1.txt $PWD/param2.txt $PWD/archive.txt | gf sqli > gf/sqli_params.txt
+	cat $PWD/param1.txt $PWD/param2.txt $PWD/archive.txt | gf sqli | tee gf/sqli_params.txt
 	echo -e "\n${BOLDCYAN} [+] Possible Vulnerable SQLi Links Saved in ${BOLDGREEN} $PWD/ssrf_params.txt ${white}\n"
                 
 	#Collecting possible vulnerable links
 	echo -e "${BOLDCYAN}################# Collecting Possible Vulnerable SSRF Links ################# ${white}\n"
-	cat $PWD/archive.txt | gf ssrf > gf/ssrf_params.txt
+	cat $PWD/archive.txt | gf ssrf | tee gf/ssrf_params.txt
 	echo -e "\n${BOLDCYAN} [+] Possible Vulnerable SSRF Links saved in ${BOLDGREEN} $PWD/gf/ssrf_params.txt ${white}\n"
 
 	#Collecting possible vulnerable links
 	echo -e "${BOLDCYAN}################# Collecting Possible Vulnerable LFI Links ################# ${white}\n"
-	cat $PWD/archive.txt | gf lfi > gf/lfi_params.txt
+	cat $PWD/archive.txt | gf lfi | tee gf/lfi_params.txt
 	echo -e "\n${BOLDCYAN} [+] Possible Vulnerable LFI Links saved in ${BOLDGREEN} $PWD/gf/lfi_params.txt ${white}\n"
 
 	#Collecting possible vulnerable links
 	echo -e "${BOLDCYAN}################# Collecting Possible Vulnerable IDOR Links ################# ${white}\n"
-	cat $PWD/archive.txt | gf idor > sqli_params.txt
+	cat $PWD/archive.txt | gf idor | tee sqli_params.txt
 	echo -e "\n${BOLDCYAN} [+] Possible Vulnerable SQLi Links saved in ${BOLDGREEN} $PWD/idor_params.txt ${white}\n"
 
 	#Collecting possible vulnerable links
 	echo -e "${BOLDCYAN}################# Collecting Possible Vulnerable Redirect Links ################# ${white}\n"
-	cat $PWD/archive.txt | gf redirect > gf/redirect_params.txt
+	cat $PWD/archive.txt | gf redirect | tee gf/redirect_params.txt
 	echo -e "\n${BOLDCYAN} [+] Possible Vulnerable Redirect Links saved in ${BOLDGREEN} $PWD/gf/redirect_params.txt ${white}\n"
 }
 
